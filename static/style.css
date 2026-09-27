@@ -4,13 +4,14 @@
   --bg:#070a12; --panel:#0f1522; --panel2:#141d2e;
   --blue:#2d82ff; --royal:#3e9cff; --cyan:#5de0ff;
   --white:#f2f6fc; --muted:#9eafc2; --green:#4ddd9a; --red:#ff5268;
-  --line:rgba(110,150,200,.18);
+  --line:rgba(110,150,200,.18); --orange:#ffa546;
+  --navy:#0b1730;
 }
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(circle at 80% -10%,#10284a 0,transparent 35%),var(--bg);color:var(--white);font-family:Inter,system-ui,sans-serif;min-height:100vh}
 nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 5%;gap:28px;background:rgba(7,10,18,.86);backdrop-filter:blur(12px);position:sticky;top:0;z-index:5}
 .brand{color:var(--white);text-decoration:none;font-weight:700;font-size:17px;display:flex;align-items:center;gap:10px}.brand b{color:var(--blue)}
-.logo-mark{display:grid;place-items:center;width:30px;height:30px;border:2px solid var(--blue);border-radius:7px;color:var(--blue);font-weight:800}
+.logo-mark{display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--blue);border-radius:9px;color:var(--blue);font-weight:800;background:var(--navy)}.logo-mark svg{width:18px;height:18px}
 .nav-link{color:var(--muted);text-decoration:none}.reset{margin-left:auto;color:var(--cyan);text-decoration:none;font-size:13px}
 main{width:min(1160px,90%);margin:0 auto 60px}
 .hero{padding:82px 0 55px;text-align:center}.hero.small{padding:55px 0 30px}
