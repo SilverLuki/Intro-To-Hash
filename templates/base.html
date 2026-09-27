@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Securinets ISI — Hash Lab{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+  <a class="brand" href="{{ url_for('index') }}">
+    <span class="logo-mark">S</span>
+    <span>Securinets <b>ISI</b></span>
+  </a>
+  <a class="nav-link" href="{{ url_for('index') }}">Hash Lab</a>
+  <a class="reset" href="{{ url_for('reset') }}">New Lab Session</a>
+</nav>
+<main>{% block content %}{% endblock %}</main>
+<footer>Securinets ISI • Authorized CTF / workshop lab only</footer>
+</body>
+</html>

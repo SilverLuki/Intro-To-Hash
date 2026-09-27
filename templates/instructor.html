@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Instructor — Corrections{% endblock %}
+{% block content %}
+<div class="hero small">
+  <div class="eyebrow">INSTRUCTOR ONLY</div>
+  <h1>SESSION ANSWERS</h1>
+  <p>These values belong to the current browser session. Students receive different generated targets.</p>
+</div>
+<section class="instructor">
+{% for t, inst in rows %}
+  <article>
+    <div class="card-top"><span>LEVEL {{ t.level }}</span><span>{{ t.algo }}</span></div>
+    <h2>{{ t.title }}</h2>
+    <div class="secret">PASSWORD: <b>{{ inst.password }}</b></div>
+    <div class="secret">HASH: <code>{{ inst.hash }}</code></div>
+    {% if inst.salt %}<div class="secret">SALT: <code>{{ inst.salt }}</code></div>{% endif %}
+  </article>
+{% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Securinets ISI — Hash Lab{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">SECURINETS ISI • CYBERSECURITY WORKSHOP</div>
+  <h1>CRACK THE <span>HASH.</span></h1>
+  <p>Start with your first Hashcat command. Every level introduces one new idea until you reach a modern password-hashing wall.</p>
+  <div class="hero-chips">
+    <span>9 TASKS</span><span>HASHCAT</span><span>CTF MINDSET</span><span>ARGON2ID</span>
+  </div>
+</section>
+
+<section class="grid">
+{% for t in tasks %}
+  <a class="card {% if t.id in solved %}solved{% endif %}" href="{{ url_for('task', tid=t.id) }}">
+    <div class="card-top"><span>LEVEL {{ t.level }}</span>{% if t.id in solved %}<span class="done">✓ SOLVED</span>{% endif %}</div>
+    <h2>{{ t.title }}</h2>
+    <p>{{ t.new }}</p>
+    <div class="meta"><span>{{ t.algo }}</span><span>{{ t.attack }}</span></div>
+  </a>
+{% endfor %}
+</section>
+{% endblock %}
