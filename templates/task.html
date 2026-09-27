@@ -3,72 +3,26 @@
 {% block content %}
 <div class="hero small">
   <div class="eyebrow">SECURINETS ISI • LEVEL {{ task.level }}</div>
+  <h1>{{ task.title }}</h1>
 </div>
 
-<div class="task-head">
-  <div>
-    <h1>{{ task.title }}</h1>
-    <p>{{ task.story }}</p>
-  </div>
-  {% if task.final %}<div class="danger-badge">FINAL WALL</div>{% endif %}
-</div>
+<div class="main-panel solo">
+  <div class="label">TARGET{% if instance.salt %} (HASH:SALT){% endif %}</div>
+  <div class="hash">{{ instance.hash }}{% if instance.salt %}:{{ instance.salt }}{% endif %}</div>
 
-<div class="task-grid">
-  <div class="main-panel">
-    <div class="label">TARGET{% if instance.salt %} (HASH:SALT){% endif %}</div>
-    <div class="hash">{{ instance.hash }}{% if instance.salt %}:{{ instance.salt }}{% endif %}</div>
-
-    <div class="info-row">
-      <div><small>ALGORITHM</small><code>{{ task.algo }}</code></div>
-      <div><small>ATTACK TYPE</small><code>{{ task.attack }}</code></div>
-    </div>
-
-    <div class="new-box">
-      <b>NEW THIS LEVEL</b>
-      <p>{{ task.new }}</p>
-    </div>
-
-    <div class="hint">
-      <span>HINT</span>
-      <p>{{ task.hint }}</p>
-    </div>
-
-    <form method="POST" class="answer">
-      <label for="answer">Recovered password</label>
-      <input id="answer" name="answer" type="text" placeholder="Enter the cracked password" autocomplete="off" autofocus>
-      <button type="submit">Submit</button>
-    </form>
-
-    {% if message %}
-    <div class="result {{ 'ok' if success else 'bad' }}">{{ message }}</div>
-    {% endif %}
+  <div class="new-box">
+    <b>NEW THIS LEVEL</b>
+    <p>{{ task.new }}</p>
   </div>
 
-  <div class="side-panel">
-    <h3>WORKFLOW</h3>
-    <ol>
-      <li>Copy the target{% if instance.salt %} (hash:salt){% endif %} above.</li>
-      <li>Confirm the algorithm from the clues.</li>
-      <li>Build the matching Hashcat command.</li>
-      <li>Run it on your local Hashcat setup.</li>
-      <li>Submit the recovered password here.</li>
-    </ol>
-    <p>Wordlist: {{ task.wordlist or "none — mask / brute-force" }}</p>
+  <form method="POST" class="answer">
+    <label for="answer">Recovered password</label>
+    <input id="answer" name="answer" type="text" placeholder="Enter the cracked password" autocomplete="off" autofocus>
+    <button type="submit">Submit</button>
+  </form>
 
-    <div class="mode">
-      HASHCAT MODE
-      <strong>{{ task.mode }}</strong>
-    </div>
-    <div class="mode">
-      REFERENCE COMMAND
-      <strong style="font-size:12px;word-break:break-all">{{ task.command }}</strong>
-    </div>
-  </div>
-</div>
-
-<div class="bottom-nav">
-  {% if task.id > 1 %}<a href="{{ url_for('task', tid=task.id-1) }}">← Previous level</a>{% else %}<span></span>{% endif %}
-  <a href="{{ url_for('index') }}">All tasks</a>
-  {% if task.id < tasks|length %}<a href="{{ url_for('task', tid=task.id+1) }}">Next level →</a>{% else %}<span></span>{% endif %}
+  {% if message %}
+  <div class="result {{ 'ok' if success else 'bad' }}">{{ message }}</div>
+  {% endif %}
 </div>
 {% endblock %}
